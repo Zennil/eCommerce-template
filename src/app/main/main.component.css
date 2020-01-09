@@ -1,0 +1,22 @@
+.title-bandeja {
+	color: #000;
+	text-transform: uppercase;
+}
+.title-bandeja b {
+	color: #3c6ac0;
+}
+.carousel-control-prev, .carousel-control-next{
+	width: 3%;
+}
+.star-rating li {
+	padding: 0;
+}
+.star-rating i {
+	font-size: 14px;
+	color: #ffc000;
+}
+
+.thumb-wrapper img{
+	width: 100px; 
+	height: 100px;
+}
