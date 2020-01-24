@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Slider } from '../models/slider';
+import { SliderService } from '../services/sliders.service';
 
 class Articulo {
   nombre: String;
@@ -20,50 +22,26 @@ class ForClientes {
 })
 export class MainComponent implements OnInit {
 
-  arrayForClientes: ForClientes[] = [];
+  sliderOfertasVet: Slider[] = [];
+  sliderOfertasAgr: Slider[] = [];
+  sliderOfertasAcs: Slider[] = [];
 
-  constructor() { }
+  sliderOfertas: Slider[];
+  arrarForClientes: ForClientes[] = [];
+  arrayForBuyAgain: ForClientes[] = [];
+
+  constructor(private sliderService: SliderService) {
+
+    this.sliderOfertasVet = this.sliderService.getSlidOfertasByCateg('vet');
+    this.sliderOfertasAgr = this.sliderService.getSlidOfertasByCateg('agr');
+    this.sliderOfertasAcs = this.sliderService.getSlidOfertasByCateg('acs');
+
+    this.sliderOfertas = this.sliderService.getSlidOfertasByCateg('vet');
+  }
 
   ngOnInit() {
-    this.arrayForClientes = [
-      {
-        nombre: 'Uno',
-        articulos: [
-          this.newArticulo('Estado de cuenta', 'src/assets/img/img-background.jpg', 109.00, 99, 4),
-          this.newArticulo('Rastreo de pedidos', 'src/assets/img/img-background.jpg', 599.00, 569.00, 4),
-          this.newArticulo('Realiza nuevo pedido', 'src/assets/img/img-background.jpg', 1099.00, 869.00, 4),
-          this.newArticulo('Registra tus pagos', 'src/assets/img/img-background.jpg', 289.00, 269.00, 5)
-        ]
-      },
-      {
-        nombre: 'Dos',
-        articulos: [
-          this.newArticulo('Oferta #1', 'src/assets/img/img-background2.jpg', 109.00, 99, 4),
-          this.newArticulo('Oferta #2', 'src/assets/img/img-background2.jpg', 599.00, 569.00, 4),
-          this.newArticulo('Oferta #3', 'src/assets/img/img-background2.jpg', 1099.00, 869.00, 4)
-          // this.newArticulo('Oferta #4', 'src/assets/img/img-background2.jpg', 289.00, 269.00, 5)
-        ]
-      },
-      {
-        nombre: 'Tres',
-        articulos: [
-          this.newArticulo('Apple Watch', 'src/assets/img/img-background3.jpg', 369.00, 349.00, 4),
-          this.newArticulo('Canon DSLR', 'src/assets/img/img-background3.jpg', 315.00, 250.00, 4),
-          this.newArticulo('Google Pixel', 'src/assets/img/img-background3.jpg', 450.00, 418.00, 3),
-          this.newArticulo('Apple iPhone', 'src/assets/img/img-background3.jpg', 350.00, 330.00, 4)
-        ]
-      },
-      {
-        nombre: 'Cuatro',
-        articulos: [
-          this.newArticulo('Nikon DSLR', 'src/assets/img/img-background4.png', 400.00, 369.00, 4),
-          this.newArticulo('Sony Headphone', 'src/assets/img/img-background4.png', 25.00, 23.99, 4),
-          this.newArticulo('Macbook Air', 'src/assets/img/img-background4.png', 899.00, 649.00, 4),
-          this.newArticulo('Apple iPad', 'src/assets/img/img-background4.png', 315.00, 250.00, 3),
-          this.newArticulo('Xiaomi MI9', 'src/assets/img/img-background4.png', 260.00, 250.00, 3)
-        ]
-      }
-    ];
+    this.arrarForClientes = this.getArrayForClientes();
+    this.arrayForBuyAgain = this.getArrayForBuyAgain();
   }
 
   newArticulo(nombre: String, imagen: String, oldPrecio: number, precio: number, strars: number): Articulo {
@@ -79,6 +57,43 @@ export class MainComponent implements OnInit {
       stars: starsString
     };
     return articulo;
+  }
+
+  getArrayForClientes(): ForClientes[] {
+    const array: ForClientes[] = [
+      {
+        nombre: 'Uno',
+        articulos: [
+          this.newArticulo('Estado de cuenta', 'assets/img/picture.png', 109.00, 99, 4),
+          this.newArticulo('Rastreo de pedidos', 'assets/img/picture.png', 599.00, 569.00, 4),
+          this.newArticulo('Nuevo pedido', 'assets/img/picture.png', 1099.00, 869.00, 4),
+          this.newArticulo('Registra tus pagos', 'assets/img/picture.png', 289.00, 269.00, 5),
+        ]
+      }
+    ];
+    return array;
+  }
+
+
+  getArrayForBuyAgain(): ForClientes[] {
+    const array: ForClientes[] = [
+      {
+        nombre: 'Cinco',
+        articulos: [
+          this.newArticulo('Producto #1', 'assets/img/pictures.png', 109.00, 99, 4),
+          this.newArticulo('Producto #2', 'assets/img/pictures.png', 599.00, 569.00, 4),
+          this.newArticulo('Producto #3', 'assets/img/pictures.png', 1099.00, 869.00, 4),
+          this.newArticulo('Producto #4', 'assets/img/pictures.png', 289.00, 269.00, 5),
+          this.newArticulo('Producto #5', 'assets/img/pictures.png', 109.00, 99, 4),
+          this.newArticulo('Producto #6', 'assets/img/pictures.png', 599.00, 569.00, 4),
+          this.newArticulo('Producto #7', 'assets/img/pictures.png', 1099.00, 869.00, 4),
+          this.newArticulo('Producto #8', 'assets/img/pictures.png', 289.00, 269.00, 5),
+          this.newArticulo('Producto #9', 'assets/img/pictures.png', 1099.00, 869.00, 4),
+          this.newArticulo('Producto #10', 'assets/img/pictures.png', 289.00, 269.00, 5)
+        ]
+      }
+    ];
+    return array;
   }
 
 }

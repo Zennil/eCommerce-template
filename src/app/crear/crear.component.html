@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="producto.nombre">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripcion</label>
+                <input type="text" class="form-control" [(ngModel)]="producto.descripcion">
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <select id="categoria" class="custom-select" [(ngModel)]="producto.categoria">
+                    <option selected>Seleccionar...</option>
+                    <option value="agr">Agricola</option>
+                    <option value="vet">Veterinaria</option>
+                    <option value="acs">Accesorio</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="um">Unidad de medida</label>
+                <select id="um" class="custom-select" [(ngModel)]="producto.um">
+                    <option selected>Seleccionar...</option>
+                    <option value="Pza">Pieza</option>
+                    <option value="Paq">Paquete</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cantidadxum">Cantidad por UM</label>
+                <input type="number" class="form-control" [(ngModel)]="producto.cantidadxum">
+            </div>
+            <div class="form-group">
+                <label for="cu">Costo unitario</label>
+                <input type="number" class="form-control" [(ngModel)]="producto.cu">
+            </div>
+            <div class="form-row mb-3">
+                <div class="col-auto ml-auto">
+                    <button type="button" class="btn btn-success" (click)="saveProducto()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
