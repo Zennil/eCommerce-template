@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { AngularFireDatabase } from "@angular/fire/database";
-import { Pedido } from "../models/pedido";
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Pedido } from '../models/pedido';
 
 @Injectable({
     providedIn: 'root'
