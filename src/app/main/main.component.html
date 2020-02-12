@@ -1,32 +1,30 @@
 <div class="container-fluid">
-  <div class="row text-center my-3">
-    <div class="col-12 mt-3">
-      <div class="carousel slide carousel-fade" id="secondary-carousel" data-ride="carousel">
+  <div class="row text-center my-0 py-0 my-md-2">
 
-        <!-- <ol class="carousel-indicators">
-          <li data-target="#secondary-carousel" data-slid-to="0" class="active"></li>
-          <li data-target="#secondary-carousel" data-slid-to="1"></li>
-          <li data-target="#secondary-carousel" data-slid-to="2"></li>
-        </ol> -->
+    <div class="col-12 mt-0 px-0 px-md-3 mt-md-3">
+      <div class="carousel slide carousel-fade" id="secondary-carousel" data-ride="carousel">
 
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="carousel-caption d-block">
-              <a href="#" class="btn btn-warning btn-lg">Mas información</a>
+            <div class="carousel-caption d-none d-md-block mx-auto">
+              <button type="button" class="btn btn-warning">Mas información</button>
             </div>
-            <img src="src/assets/img/slide4.jpg" alt="" class="img-fluid rounded-lg">
+            <img src="assets/img/slide4.jpg" class="img-fluid rounded-lg d-none d-md-block mx-auto">
+            <a href="javascript:"><img src="assets/img/slide4.jpg" class="img-fluid d-md-none m-0"></a>
           </div>
           <div class="carousel-item">
-            <div class="carousel-caption d-block">
-              <a href="#" class="btn btn-warning btn-lg">Mas información</a>
+            <div class="carousel-caption d-none d-md-block mx-auto">
+              <button type="button" class="btn btn-warning">Mas información</button>
             </div>
-            <img src="src/assets/img/slide5.jpg" alt="" class="img-fluid rounded-lg">
+            <img src="assets/img/slide5.jpg" class="img-fluid rounded-lg d-none d-md-block mx-auto">
+            <a href="javascript:"><img src="assets/img/slide5.jpg" class="img-fluid d-md-none m-0"></a>
           </div>
           <div class="carousel-item">
-            <div class="carousel-caption d-block">
-              <a href="#" class="btn btn-warning btn-lg">Mas información</a>
+            <div class="carousel-caption d-none d-md-block mx-auto">
+              <button type="button" class="btn btn-warning">Mas información</button>
             </div>
-            <img src="src/assets/img/slide6.jpg" alt="" class="img-fluid rounded-lg">
+            <img src="assets/img/slide6.jpg" class="img-fluid rounded-lg d-none d-md-block mx-auto">
+            <a href="javascript:"><img src="assets/img/slide6.jpg" class="img-fluid d-md-none m-0"></a>
           </div>
         </div>
 
@@ -34,215 +32,209 @@
           <span class="carousel-control-prev-icon"></span>
           <span class="sr-only">Anterior</span>
         </a>
-
         <a href="#secondary-carousel" class="carousel-control-next" data-slide="next">
           <span class="carousel-control-next-icon"></span>
           <span class="sr-only">Siguiente</span>
         </a>
+
       </div>
     </div>
   </div>
 </div>
 
-<!-- BANDEJA UNO ======================================================================================= -->
-<div class="container-fluid py-4">
-  <div class="row text-center">
-    <div class="col-md-12">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="javascript:"><span class="text-info"><strong>Para clientes registrados</strong></span></a>
-        </li>
-      </ul>
-      <div id="carouselCards" class="carousel slide border border-top-0" data-ride="carousel" data-interval="0">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carouselCards" data-slide-to="0" class="active text-primary"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards" data-slide-to="1"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards" data-slide-to="2"><i class="text-dark"></i></li>
-        </ol>
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-          <div class="item carousel-item" [ngClass]="{'active': forClientes.nombre === 'Uno'}"
-            *ngFor="let forClientes of arrayForClientes">
-            <div class="row justify-content-around py-3">
-              <div class="col-sm-2 p-3 m-3 card" *ngFor="let articulo of forClientes.articulos">
-                <div class="thumb-title text-right">
-                  <a href="javascript:" class="text-muted"><span><i class="fa fa-file-alt"></i></span></a>
-                </div>
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <img [src]="articulo.imagen" class="img-thumbnail img-responsive img-fluid">
+<div data-spy="scroll" data-target="#nav-categorias" data-offset="0">
+  <!-- BANDEJA UNO ======================================================================================= -->
+  <div id="for-clientes" class="container-fluid py-4">
+    <div class="row text-center">
+      <div class="col-md-12">
+
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active small" href="javascript:"><span><strong>Para clientes
+                  registrados</strong></span></a>
+          </li>
+        </ul>
+
+        <div class="border border-top-0">
+          <div class="carousel-inner">
+            <div *ngFor="let forClientes of arrarForClientes">
+              <div class="row justify-content-around py-3">
+                <div class="col-4 col-sm-3 col-md-2 p-4 m-2 card" routerLink="/login"
+                  *ngFor="let articulo of forClientes.articulos">
+                  <div class="thumb-wrapper">
+                    <div class="img-box">
+                      <img [src]="articulo.imagen" class="img-thumbnail img-responsive img-fluid">
+                    </div>
                   </div>
-                </div>
-                <div class="thumb-content">
-                  <p class="lead font-weight-bold">{{articulo.nombre}}</p>
+                  <div class="thumb-content">
+                    <p class="font-weight-bold pt-3 d-none d-md-block">{{articulo.nombre}}</p>
+                    <span class="small d-md-none"><strong>{{articulo.nombre}}</strong></span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control left carousel-control-prev" href="#carouselCards" data-slide="prev">
-          <i class="text-dark fa fa-3x fa-angle-left"></i>
-        </a>
-        <a class="carousel-control right carousel-control-next" href="#carouselCards" data-slide="next">
-          <i class="text-dark fa fa-3x fa-angle-right"></i>
-        </a>
+
       </div>
     </div>
   </div>
-</div>
 
-<!-- BANDEJA DOS ======================================================================================= -->
-<div class="container-fluid py-4">
-  <div class="row text-center">
-    <div class="col-md-12">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="javascript:"><span class="text-info"><strong>Ofertas veterinaria</strong></span></a>
-        </li>
-      </ul>
-      <div id="carouselCards2" class="carousel slide border border-top-0" data-ride="carousel" data-interval="0">
-        <!-- Carousel indicators -->
-        <!-- <ol class="carousel-indicators">
-          <li data-target="#carouselCards2" data-slide-to="0" class="active text-primary"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards2" data-slide-to="1"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards2" data-slide-to="2"><i class="text-dark"></i></li>
-        </ol> -->
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-          <div class="item carousel-item" [ngClass]="{'active': forClientes.nombre === 'Dos'}"
-            *ngFor="let forClientes of arrayForClientes">
-            <div class="row justify-content-around py-3">
-              <div class="col-sm-3 p-3 m-3 card" *ngFor="let articulo of forClientes.articulos">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <img [src]="articulo.imagen" class="img-thumbnail img-responsive img-fluid">
+  <!-- NUEVO CON FIREBASE-->
+  <div class="container-fluid">
+
+    <!-- SLIDER VETERINARIA -->
+    <div id="for-veterinaria" class="row flex-xl-nowrap">
+      <div class="col-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active small" href="javascript:">
+              <span><strong>Ofertas Veterinaria</strong></span></a>
+          </li>
+        </ul>
+        <div class="bd-example border border-top-0">
+          <div id="carousel-veterinaria" class="carousel slide" data-ride="carousel" data-interval="0">
+            <div class="carousel-inner">
+              <div class="carousel-item active" *ngFor="let slide of sliderOfertasVet"
+                [ngClass]="{'active': slide.position === 0}">
+                <div class="block4-wrap">
+                  <div class="block4 text-center card m-3" *ngFor="let producto of slide.section">
+                    <img class="d-block w-25 mx-auto" [src]="producto.imagen" alt="{{Slide + (slide.position + 1)}}">
+                    <div class="my-captions mt-0">
+                      <h5 class="mb-0">{{producto.nombre}}</h5>
+                      <a href="javascript:" class="text-muted small">{{producto.descripcion}}</a>
+                    </div>
                   </div>
-                </div>
-                <div class="thumb-content">
-                  <p class="lead font-weight-bold my-0">{{articulo.nombre}}</p>
-                  <small><a href="javascript:" class="text-muted">Mas informacion</a></small>
                 </div>
               </div>
             </div>
+            <!-- CONTROLS -->
+            <div [ngClass]="{'d-none': sliderOfertasVet.length === 1}">
+              <a class="carousel-control-prev" href="#carousel-veterinaria" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                  class="sr-only">Previous</span> </a>
+              <a class="carousel-control-next" href="#carousel-veterinaria" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
         </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control left carousel-control-prev" href="#carouselCards2" data-slide="prev">
-          <i class="text-dark fa fa-3x fa-angle-left"></i>
-        </a>
-        <a class="carousel-control right carousel-control-next" href="#carouselCards2" data-slide="next">
-          <i class="text-dark fa fa-3x fa-angle-right"></i>
-        </a>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- BANDEJA TRES ======================================================================================= -->
-<div class="container-fluid py-4">
-  <div class="row text-center">
-    <div class="col-md-12">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="javascript:"><span class="text-info"><strong>Ofertas agricola</strong></span></a>
-        </li>
-      </ul>
-      <div id="carouselCards3" class="carousel slide border border-top-0" data-ride="carousel" data-interval="0">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carouselCards3" data-slide-to="0" class="active text-primary"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards3" data-slide-to="1"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards3" data-slide-to="2"><i class="text-dark"></i></li>
-        </ol>
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-          <div class="item carousel-item" [ngClass]="{'active': forClientes.nombre === 'Tres'}"
-            *ngFor="let forClientes of arrayForClientes">
-            <div class="row justify-content-around py-3">
-              <div class="col-sm-2 p-3 m-3 card" *ngFor="let articulo of forClientes.articulos">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <img [src]="articulo.imagen" class="img-thumbnail img-responsive img-fluid">
+    <!-- SLIDER AGRICOLA -->
+    <div id="for-agricola" class="row flex-xl-nowrap pt-3">
+      <div class="col-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active small" href="javascript:">
+              <span><strong>Ofertas Agricola</strong></span></a>
+          </li>
+        </ul>
+        <div class="bd-example border border-top-0">
+          <div id="carousel-agricola" class="carousel slide" data-ride="carousel" data-interval="0">
+            <div class="carousel-inner">
+              <div class="carousel-item active" *ngFor="let slide of sliderOfertasAgr"
+                [ngClass]="{'active': slide.position === 0}">
+                <div class="block4-wrap">
+                  <div class="block4 text-center card m-3" *ngFor="let producto of slide.section">
+                    <img class="d-block w-25 mx-auto" [src]="producto.imagen" alt="{{Slide + (slide.position + 1)}}">
+                    <div class="my-captions mt-0">
+                      <h5 class="mb-0">{{producto.nombre}}</h5>
+                      <a href="javascript:" class="text-muted small">{{producto.descripcion}}</a>
+                    </div>
                   </div>
-                </div>
-                <div class="thumb-content">
-                  <p class="my-0">{{articulo.nombre}}</p>
-                  <p class="item-price my-0"><s>${{articulo.oldPrecio}}</s> -> <span class="text-success">${{articulo.precio}}</span></p>
-                  <div class="star-rating">
-                    <ul class="list-inline mb-1">
-                      <li class="list-inline-item" *ngFor="let styleStar of articulo.stars"><i [class]="styleStar"></i>
-                      </li>
-                    </ul>
-                  </div>
-                  <button type="button" class="btn btn-outline-dark">Agregar al carrito</button>
                 </div>
               </div>
             </div>
+            <!-- CONTROLS -->
+            <div [ngClass]="{'d-none': sliderOfertasAgr.length === 1}">
+              <a class="carousel-control-prev" href="#carousel-agricola" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                  class="sr-only">Previous</span> </a>
+              <a class="carousel-control-next" href="#carousel-agricola" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
         </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control left carousel-control-prev" href="#carouselCards3" data-slide="prev">
-          <i class="text-dark fa fa-3x fa-angle-left"></i>
-        </a>
-        <a class="carousel-control right carousel-control-next" href="#carouselCards3" data-slide="next">
-          <i class="text-dark fa fa-3x fa-angle-right"></i>
-        </a>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- BANDEJA CUATRO ======================================================================================= -->
-<div class="container-fluid py-4">
-  <div class="row text-center">
-    <div class="col-md-12">
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="javascript:"><span class="text-info"><strong>Ofertas accesorios</strong></span></a>
-        </li>
-      </ul>
-      <div id="carouselCards4" class="carousel slide border border-top-0" data-ride="carousel" data-interval="0">
-        <!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carouselCards4" data-slide-to="0" class="active text-primary"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards4" data-slide-to="1"><i class="text-dark"></i></li>
-          <li data-target="#carouselCards4" data-slide-to="2"><i class="text-dark"></i></li>
-        </ol>
-        <!-- Wrapper for carousel items -->
-        <div class="carousel-inner">
-          <div class="item carousel-item" [ngClass]="{'active': forClientes.nombre === 'Cuatro'}"
-            *ngFor="let forClientes of arrayForClientes">
-            <div class="row justify-content-between">
-              <div class="col-sm-2 py-3" *ngFor="let articulo of forClientes.articulos">
-                <div class="thumb-wrapper">
-                  <div class="img-box">
-                    <img [src]="articulo.imagen" class="img-thumbnail img-responsive img-fluid">
+    <!-- SLIDER ACCESORIOS -->
+    <div id="for-accesorios" class="row flex-xl-nowrap pt-3">
+      <div class="col-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active small" href="javascript:">
+              <span><strong>Ofertas Accesorios</strong></span></a>
+          </li>
+        </ul>
+        <div class="bd-example border border-top-0">
+          <div id="carousel-accesorios" class="carousel slide" data-ride="carousel" data-interval="0">
+            <div class="carousel-inner">
+              <div class="carousel-item active" *ngFor="let slide of sliderOfertasAcs"
+                [ngClass]="{'active': slide.position === 0}">
+                <div class="block4-wrap">
+                  <div class="block4 text-center card m-3" *ngFor="let producto of slide.section">
+                    <img class="d-block w-25 mx-auto" [src]="producto.imagen" alt="{{Slide + (slide.position + 1)}}">
+                    <div class="my-captions mt-0">
+                      <h5 class="mb-0">{{producto.nombre}}</h5>
+                      <a href="javascript:" class="text-muted small">{{producto.descripcion}}</a>
+                    </div>
                   </div>
                 </div>
-                <div class="thumb-content">
-                  <p class="my-0">{{articulo.nombre}}</p>
-                  <p class="item-price my-0"><s>${{articulo.oldPrecio}}</s> -> <span class="text-success">${{articulo.precio}}</span></p>
-                  <div class="star-rating">
-                    <ul class="list-inline mb-1">
-                      <li class="list-inline-item" *ngFor="let styleStar of articulo.stars"><i [class]="styleStar"></i>
-                      </li>
-                    </ul>
+              </div>
+            </div>
+            <!-- CONTROLS -->
+            <div [ngClass]="{'d-none': sliderOfertasAgr.length === 1}">
+              <a class="carousel-control-prev" href="#carousel-accesorios" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                  class="sr-only">Previous</span> </a>
+              <a class="carousel-control-next" href="#carousel-accesorios" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- BANDEJA CINCO ======================================================================================= -->
+  <div id="for-buy-again" class="container-fluid py-4 mb-4">
+    <div class="row text-center">
+      <div class="col-md-12">
+
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="javascript:"><span><strong>Volver a comprar</strong></span></a>
+          </li>
+        </ul>
+
+        <div class="border border-top-0">
+          <div class="carousel-inner">
+            <div *ngFor="let forAgain of arrayForBuyAgain">
+              <div class="row justify-content-around py-3">
+                <div class="col-4 col-sm-3 col-md-2 p-4 m-2 card" *ngFor="let articulo of forAgain.articulos">
+                  <div class="thumb-wrapper">
+                    <div class="img-box">
+                      <img [src]="articulo.imagen" class="img-thumbnail img-responsive img-fluid">
+                    </div>
                   </div>
-                  <button type="button" class="btn btn-outline-dark">Agregar al carrito</button>
+                  <div class="thumb-content">
+                    <p class="lead font-weight-bold my-0 d-none d-md-block">{{articulo.nombre}}</p>
+                    <span class="small d-md-none"><strong>{{articulo.nombre}}</strong></span>
+                    <br class="d-md-none">
+                    <small><a href="javascript:" class="text-muted">Agregar al carrito</a></small>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Carousel controls -->
-        <a class="carousel-control left carousel-control-prev" href="#carouselCards4" data-slide="prev">
-          <i class="text-dark fa fa-3x fa-angle-left"></i>
-        </a>
-        <a class="carousel-control right carousel-control-next" href="#carouselCards4" data-slide="next">
-          <i class="text-dark fa fa-3x fa-angle-right"></i>
-        </a>
       </div>
     </div>
   </div>

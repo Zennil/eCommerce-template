@@ -1,0 +1,292 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="row py-3">
+
+    <div class="col-12 col-lg-9 order-1 pr-lg-0 mb-3">
+      <div class="card">
+        <div style="height: 85vh; overflow: auto;">
+          <div class="card-body container-fluid">
+
+            <!-- SLIDER VETERINARIA -->
+            <div class="row flex-xl-nowrap">
+              <div class="col-12">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active small" href="javascript:">
+                      <span><strong>Ofertas Veterinaria</strong></span></a>
+                  </li>
+                </ul>
+                <div class="bd-example border border-top-0">
+                  <div id="carousel-veterinaria" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" *ngFor="let slide of sliderOfertasVet"
+                        [ngClass]="{'active': slide.position === 0}">
+                        <div class="block4-wrap">
+                          <div class="block4 text-center card m-3" *ngFor="let producto of slide.section">
+                            <img class="d-block w-25 mx-auto" [src]="producto.imagen"
+                              alt="{{Slide + (slide.position + 1)}}">
+                            <div class="my-captions mt-0">
+                              <h5 class="mb-0">{{producto.nombre}}</h5>
+                              <a href="javascript:" class="text-muted small">{{producto.descripcion}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- CONTROLS -->
+                    <div [ngClass]="{'d-none': sliderOfertasVet.length === 1}">
+                      <a class="carousel-control-prev" href="#carousel-veterinaria" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                          class="sr-only">Previous</span> </a>
+                      <a class="carousel-control-next" href="#carousel-veterinaria" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span> <span
+                          class="sr-only">Next</span> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SLIDER AGRICOLA -->
+            <div class="row flex-xl-nowrap pt-3">
+              <div class="col-12">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active small" href="javascript:">
+                      <span><strong>Ofertas Agricola</strong></span></a>
+                  </li>
+                </ul>
+                <div class="bd-example border border-top-0">
+                  <div id="carousel-agricola" class="carousel slide" data-ride="carousel" data-interval="6500">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" *ngFor="let slide of sliderOfertasAgr"
+                        [ngClass]="{'active': slide.position === 0}">
+                        <div class="block4-wrap">
+                          <div class="block4 text-center card m-3" *ngFor="let producto of slide.section">
+                            <img class="d-block w-25 mx-auto" [src]="producto.imagen"
+                              alt="{{Slide + (slide.position + 1)}}">
+                            <div class="my-captions mt-0">
+                              <h5 class="mb-0">{{producto.nombre}}</h5>
+                              <a href="javascript:" class="text-muted small">{{producto.descripcion}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- CONTROLS -->
+                    <div [ngClass]="{'d-none': sliderOfertasAgr.length === 1}">
+                      <a class="carousel-control-prev" href="#carousel-agricola" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+                          class="sr-only">Previous</span> </a>
+                      <a class="carousel-control-next" href="#carousel-agricola" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span> <span
+                          class="sr-only">Next</span> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CAJA CON RESULTADOS DE BUSQUEDA -->
+            <div class="row pt-3">
+              <div class="col-md-12">
+
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="javascript:"><span><strong>Productos
+                          seleccionados</strong></span></a>
+                  </li>
+                </ul>
+
+                <div class="border border-top-0">
+                  <div class="row pb-3 mx-1">
+
+                    <div class="col-sm-6 col-lg-4 pt-3" *ngFor="let producto of resultProductos;let i = index">
+                      <div class="card">
+                        <div class="card-body pt-2">
+                          <div class="text-right">
+                            <button class="btn btn-sm btn-info" [attr.data-target]="'#more-info-' + (i+1)"
+                              data-toggle="collapse"> <i class="fa fa-info-circle"></i>
+                            </button>
+                          </div>
+                          <div class="text-center">
+                            <img [src]="producto.imagen" class="w-50 img-fluid d-inline-block">
+                          </div>
+                          <h5 class="mb-0">{{producto.nombre}}
+                            <span class="text-muted">{{producto.cu | currency: ''}}</span>
+                          </h5>
+                          <p class="card-text text-truncate mb-2">Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Dolorum rerum mollitia, ducimus adipisci commodi iusto aliquid! Voluptatem aperiam
+                            dolore voluptatum corporis necessitatibus. Rem enim vitae atque cupiditate error.</p>
+                          <div class="form-group row justify-content-around mb-0 text-center">
+                            <label class="col-auto col-lg-12 col-xl-auto col-form-label h5">
+                              {{ (arrayCantProd[i] > 0 ? producto.cu * arrayCantProd[i] : '0') | currency: ''}}
+                            </label>
+                            <div class="col py-1">
+                              <div class="input-group input-group-sm mb-3">
+                                <input type="number" class="form-control text-right" placeholder="Cantidad"
+                                  [(ngModel)]="arrayCantProd[i]">
+                                <div class="input-group-append" placement="top" data-toggle="tooltip"
+                                  ngbTooltip="{{producto.um !== 'Pza' ? 'Contiene ' + producto.cantidadxum + ' elementos.' : ''}}">
+                                  <label class="input-group-text">{{producto.um}}</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="collapse" [id]="'more-info-' + (i+1)">
+                            <p class="card-text">
+                              Repellat rerum, vitae praesentium ex velit expedita, blanditiis sit iusto maiores
+                              voluptatem odio fugit perspiciatis unde dolores facilis labore ab iste voluptatibus?
+                            </p>
+                            <div class="form-group row justify-content-around">
+                              <div class="col-auto">
+                                <button type="button" class="btn btn-primary">
+                                  <span><i class="fa fa-file-pdf"></i> F.T.</span></button>
+                              </div>
+                              <div class="col-auto">
+                                <button type="button" class="btn btn-warning">
+                                  <span class="text-white"><i class="fa fa-fire"></i> H.S.</span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="my-2">
+                            <button type="button" class="btn btn-success" (click)="addToStack(i)" [disabled]="arrayCantProd[i] <= 0 || arrayCantProd[i] === null">
+                              <i class="fa fa-shopping-cart"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- RESUMEN DEL PEDIDO (ASIDE) -->
+    <div class="col-12 col-lg-3 order-2 d-none d-md-block">
+      <div class="card border-info shadow">
+        <div style="min-height: 85vh;">
+          <div class="card-header bg-info">
+            <h5 class="text-white"><strong>Resúmen del pedido</strong></h5>
+          </div>
+          <div class="card-body">
+
+            <div class="text-center pb-3">
+              <button type="button" class="btn btn-lg btn-success"><span><i class="fa fa-shopping-cart"></i></span>
+                Comprar</button>
+            </div>
+
+            <ul class="list-unstyled text-muted font-weight-bold">
+              <li><span class="text-primary">Importe total: {{getTotalNeto() | currency: ''}}</span></li>
+              <li><span class="text-primary">Usted ahorra: {{getTotalNeto() * .2 | currency: ''}}</span></li>
+              <li><span class="text-primary">a Pagar: {{getTotalNeto() * .8 | currency: ''}}</span></li>
+            </ul>
+
+            <table class="table table-sm small">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Producto</th>
+                  <th scope="col">UM</th>
+                  <th scope="col">Cant.</th>
+                  <th scope="col">Neto</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pedido of pedidos;let i = index"
+                  [ngClass]="{'table-success': pedido.producto.categoria === 'agr', 'table-danger': pedido.producto.categoria === 'vet'}">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{pedido.producto.nombre}}</td>
+                  <td>{{pedido.producto.um}}</td>
+                  <td>
+                    <select name="cantidad" id="cantidad">
+                      <option value="{{pedido.cantidad}}">{{pedido.cantidad}}</option>
+                    </select>
+                  </td>
+                  <td>{{pedido.cantidad * pedido.producto.cu}}</td>
+                  <td><a href="javascript:" (click)="deletePedido(pedido)" class="text-danger"><i
+                        class="fa fa-minus-square"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END RESUMEN DEL PEDIDO (ASIDE) -->
+
+    <!-- RESUMEN DEL PEDIDO (MOVIL) -->
+    <div class="col-12 col-lg-3 order-0 mb-3 d-md-none">
+      <div class="collapse" id="collapseResumen">
+        <div class="card border-info shadow">
+          <div style="min-height: 85vh;">
+            <div class="card-header bg-info">
+              <h5 class="text-white"><strong>Resúmen del pedido</strong></h5>
+            </div>
+            <div class="card-body">
+
+              <div class="text-center pb-3">
+                <button type="button" class="btn btn-lg btn-success"><span><i class="fa fa-shopping-cart"></i></span>
+                  Comprar</button>
+              </div>
+
+              <ul class="list-unstyled text-muted font-weight-bold">
+                <li><span class="text-primary">Importe total: {{getTotalNeto() | currency: ''}}</span></li>
+                <li><span class="text-primary">Usted ahorra: {{getTotalNeto() * .2 | currency: ''}}</span></li>
+                <li><span class="text-primary">a Pagar: {{getTotalNeto() * .8 | currency: ''}}</span></li>
+              </ul>
+
+              <table class="table table-sm small">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">UM</th>
+                    <th scope="col">Cant.</th>
+                    <th scope="col">Neto</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngIf="pedidos.length > 0">
+                    <tr *ngFor="let pedido of pedidos;let i = index"
+                      [ngClass]="{'table-success': pedido.producto.categoria === 'agr', 'table-danger': pedido.producto.categoria === 'vet'}">
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{pedido.producto.nombre}}</td>
+                      <td>{{pedido.producto.um}}</td>
+                      <td>
+                        <select name="cantidad" id="cantidad">
+                          <option value="{{pedido.cantidad}}">{{pedido.cantidad}}</option>
+                        </select>
+                      </td>
+                      <td>{{pedido.cantidad * pedido.producto.cu}}</td>
+                      <td><a href="javascript:" (click)="deletePedido(pedido)" class="text-danger"><i
+                            class="fa fa-minus-square"></i></a></td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END RESUMEN DEL PEDIDO (MOVIL) -->
+  </div>
+</div>
+
+<app-footer></app-footer>
